@@ -34,5 +34,10 @@ def prev_slide():
     send_mqtt_command("prev")
     return redirect(url_for("index"))
 
+@app.route("/start")
+def start_presentation():
+    send_mqtt_command("start")
+    return redirect(url_for("index"))
+
 if __name__ == "__main__":
     app.run()
