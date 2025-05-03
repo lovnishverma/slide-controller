@@ -628,7 +628,7 @@ cd slide-controller
 
 ---
 
-## 📄 Note my Creater of This Mr. Lovnish Verma
+## 📄 Special Note by Creater of This Mr. Lovnish Verma
 
 Do whatever you want, but don't blame us if you break your projector 😉.
 
