@@ -4,7 +4,10 @@
 ### **Slide Controller: Revolutionizing Remote Presentation Control with MQTT**  
 **Created by Lovnish Verma**  
 
-Tired of relying on expensive proprietary devices like the **Logitech Wireless Presenter R400 (₹2,650)** to control your slides? Meet **Slide Controller**—a cutting-edge, open-source web application that turns your smartphone, tablet, or laptop into a **fully customizable, feature-rich presentation remote**—all for **FREE**!  
+![31rEZ89EuML _AC_UF480,480_SR480,480_](https://github.com/user-attachments/assets/a2be7f1a-e4bd-4465-b350-c5f385b4c0c2)
+
+
+Tired of relying on expensive proprietary devices like the **Logitech Wireless Presenter R400, etc** to control your slides? Meet **Slide Controller**—a cutting-edge, open-source web application that turns your smartphone, tablet, or laptop into a **fully customizable, feature-rich presentation remote**—all for **FREE**!  
 
 ---
 
@@ -39,7 +42,7 @@ Tired of relying on expensive proprietary devices like the **Logitech Wireless P
 ### **Features That Set It Apart**  
 | **Unique Features** | **Traditional Remotes** | **Slide Controller** |  
 |----------------------|-------------------------|----------------------|  
-| **Cost**             | ₹2,650+                | **FREE** (Open Source)|  
+| **Cost**             | ₹2,500+                | **FREE** (Open Source)|  
 | **Customization**    | Limited buttons         | Add voice/gesture/IoT controls |  
 | **Connectivity**     | Wired/Wi-Fi only        | Cross-platform via MQTT |  
 | **Feedback**         | None                    | Haptic vibrations + visual cues |  
