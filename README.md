@@ -64,7 +64,8 @@ Tired of relying on expensive proprietary devices like the **[Logitech Wireless 
 ---
 
 ### **What Makes It Truly Unique?**  
-- **First-of-Its-Kind Integration**: Combines **motion sensing**, **MQTT**, and **web automation** into a single package.  
+- **First-of-Its-Kind Integration**: Combines **motion sensing**, **MQTT**, and **web automation** into a single package.
+- **First-of-Its-Kind Integration**: No need to Connect both PC or Laptop and mobile phone to the same network. 
 - **Zero Setup Hassle**: No dongles, no pairing—just open the web app and start controlling.  
 - **Community-Driven**: Open-source code means continuous improvements and new features from contributors worldwide.  
 
