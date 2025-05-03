@@ -4,11 +4,11 @@ import pyautogui
 import ssl
 
 # MQTT Broker Configuration
-BROKER = "95bd7f2a55ad4dd799618a95837e4303.s1.eu.hivemq.cloud"
+BROKER = "95bd7f2a55ad4dd799618a9xxxxxxxxx.s1.eu.hivemq.cloud"
 PORT = 8883
-USERNAME = "lovnish"
-PASSWORD = "Nielit@123"
-TOPIC = "presentation/control"
+USERNAME = "lovxxxx"
+PASSWORD = "Secxxxx"
+TOPIC = "presentation/controlsystem"
 
 # MQTT Callback: On successful connection
 
