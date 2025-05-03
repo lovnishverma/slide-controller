@@ -1,27 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Slide Controller</title>
-    <style>
-        body { font-family: Arial; text-align: center; margin-top: 100px; }
-        button {
-            padding: 20px 40px;
-            font-size: 24px;
-            margin: 20px;
-            cursor: pointer;
-            border-radius: 10px;
-            border: none;
-            background-color: #4285F4;
-            color: white;
-        }
-        button:hover {
-            background-color: #2c6be0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Slide Controller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .button-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
+      padding: 20px 40px;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      background-color: #4285F4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s, background-color 0.2s;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3367D6;
+      transform: scale(1.05);
+    }
+
+    .shake-toggle {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #444;
+    }
+
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      margin-left: 10px;
+    }
+
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px; width: 26px;
+      left: 4px; bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+  </style>
 </head>
 <body>
-    <h1>Remote Slide Controller</h1>
-    <button onclick="location.href='/prev'">⬅️ Previous Slide</button>
-    <button onclick="location.href='/next'">Next Slide ➡️</button>
+
+  <h1>🎯 Remote Slide Controller</h1>
+
+  <div class="button-container">
+    <button onclick="sendCommand('/prev')">⬅️ Previous Slide</button>
+    <button onclick="sendCommand('/next')">Next Slide ➡️</button>
+  </div>
+
+  <div class="shake-toggle">
+    <label>Enable Shake to Change Slide</label>
+    <label class="toggle-switch">
+      <input type="checkbox" id="shakeToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <script>
+    const shakeThreshold = 15; // Adjust as needed
+    let lastShakeTime = 0;
+
+    function sendCommand(endpoint) {
+      fetch(endpoint)
+        .then(res => console.log("Sent command:", endpoint))
+        .catch(err => console.error("Error sending command:", err));
+    }
+
+    window.addEventListener('devicemotion', function (event) {
+      if (!document.getElementById("shakeToggle").checked) return;
+
+      const acc = event.accelerationIncludingGravity;
+      const totalAcc = Math.sqrt(acc.x ** 2 + acc.y ** 2 + acc.z ** 2);
+
+      const now = Date.now();
+      if (totalAcc > shakeThreshold && (now - lastShakeTime > 1500)) {
+        lastShakeTime = now;
+        console.log("Shake detected, sending 'next'");
+        sendCommand('/next');
+      }
+    });
+  </script>
+
 </body>
 </html>
