@@ -49,21 +49,19 @@ slide-controller/
 
 ## 🔄 Running the App
 
-### 1. 🚀 Start the Flask App
+### 1. 🚀 Open Control Website deployed on glitch.me
 
-```bash
-python server.py
+```markdown
+🚀 **Live Demo**: [https://remotecontroller.glitch.me](https://remotecontroller.glitch.me)
 ```
-
-Deployed online? Use Glitch or another hosting platform to serve `server.py` and `index.html`.
 
 ---
 
-### 2. 💻 Run Subscriber Script
+### 2. 💻 Run Subscriber Script or convert script to .exe file then run that...
 
 Convert `subscriber.py` to `.exe` using PyInstaller:
 
-To generate icon go to https://www.icoconverter.com/ upload .jpg or .png  and get your icon in .ico format
+Note: To generate icon go to https://www.icoconverter.com/ upload .jpg or .png  and get your icon in .ico format
 
 ```bash
 pyinstaller --onefile --icon=slidecontrol.ico subscriber.py
