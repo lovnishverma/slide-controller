@@ -1,4 +1,3 @@
-Here’s an enhanced version of your `README.md` file with detailed instructions on setting up an **MQTT Broker**, focusing on **HiveMQ Cloud**, along with complete guidance on creating an account, setting up a broker, and configuring credentials.
 
 ---
 
