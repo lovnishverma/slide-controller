@@ -24,20 +24,97 @@ The **Slide Controller** is a responsive and user-friendly web application that 
 - **MQTT Broker**: [HiveMQ Cloud](https://console.hivemq.cloud/), Mosquitto (local), or Adafruit IO
 - **Automation**: `pyautogui` for keyboard simulation
 
-## 📁 Project Structure
+
+## ✅ **Project Structure & Purpose**
+
 ```
 slide-controller/
 ├── templates/
-│   └── index.html          # Web UI
-├── server.py               # Flask MQTT publisher
-├── subscriber.py           # Python MQTT subscriber (run in local machine/host machine)
-├── subscriber.exe          # Optional EXE file that you can run on Windows PC
-├── requirements.txt        # Python dependencies
-├── start.sh                # Start script for Glitch
-├── glitch.json             # Glitch configuration
-├── .env                    # MQTT credentials (keep private)
-├── README.md               # Project documentation
+│   └── index.html
 ```
+
+* Contains the **HTML UI** for controlling slides (Next/Previous buttons).
+* This will POST actions to the Flask server and send MQTT messages accordingly.
+
+```
+├── server.py
+```
+
+* The **Flask-based MQTT publisher**.
+* Runs on Glitch and publishes `next`/`prev` slide control messages to a topic like `slide/control`.
+
+```
+├── subscriber.py
+```
+
+* The **local MQTT subscriber**.
+* Listens to the same MQTT topic and simulates key presses using `pyautogui`.
+
+```
+├── subscriber.exe
+```
+
+* A compiled version of `subscriber.py` for easy execution on a Windows system without requiring Python.
+* Can be created using `pyinstaller`.
+
+```
+├── requirements.txt
+```
+
+* Lists dependencies for both Flask (on Glitch) and the subscriber (if needed):
+  Likely includes:
+
+  ```txt
+  flask
+  paho-mqtt
+  python-dotenv
+  pyautogui
+  ```
+
+```
+├── start.sh
+```
+
+* The **entry point** script for Glitch.
+* Should contain a command like:
+
+  ```bash
+  python3 server.py
+  ```
+
+```
+├── glitch.json
+```
+
+* Configuration for Glitch deployment:
+  Example:
+
+  ```json
+  {
+    "start": "bash start.sh"
+  }
+  ```
+
+```
+├── .env
+```
+
+* **Sensitive credentials**, such as:
+
+  ```
+  MQTT_BROKER=broker.hivemq.com
+  MQTT_PORT=1883
+  MQTT_TOPIC=slide/control
+  MQTT_USERNAME=youruser
+  MQTT_PASSWORD=yourpass
+  ```
+
+```
+├── README.md
+```
+
+
+
 
 ## 🔄 Running the App
 
