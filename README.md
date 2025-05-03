@@ -26,6 +26,31 @@ The **Slide Controller** is a responsive and user-friendly web application that 
 
 ---
 
+Here's the `requirements.txt` for your `server.py` script: Install in Local PC
+
+```txt
+paho-mqtt==1.6.1
+pyautogui==0.9.54
+pymsgbox==1.0.9
+pygetwindow==0.0.9
+pytweening==1.0.7
+PyScreeze==0.1.28
+pyrect==0.2.0
+mouseinfo==0.1.3
+```
+
+### Notes:
+
+* `pyautogui` depends on several other packages like `pymsgbox`, `pytweening`, `PyScreeze`, etc., which are included here to ensure compatibility and prevent runtime issues.
+* `paho-mqtt` is used for MQTT communication.
+* If you're using this on **Linux**, make sure necessary dependencies for GUI automation (like `x11`, `scrot`, or `python3-tk`) are installed:
+
+  ```bash
+  sudo apt install scrot python3-tk python3-dev
+  ```
+
+
+
 ## 🧰 Tech Stack
 
 * **Frontend**: HTML, CSS, JavaScript
