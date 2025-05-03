@@ -55,6 +55,7 @@
         margin: 20px;
         overflow: hidden;
         padding: 24px;
+        box-sizing: border-box; /* Ensure padding is included in width */
       }
       .app-header {
         display: flex;
@@ -454,6 +455,7 @@
       @media (max-width: 380px) {
         .app-container {
           margin: 10px;
+          padding: 16px; /* Reduced padding for smaller screens */
         }
         .section {
           padding: 12px 16px;
@@ -466,6 +468,12 @@
         }
         .control-button {
           padding: 16px 0;
+        }
+        .button-container {
+          grid-template-columns: 1fr; /* Stack buttons vertically on small screens */
+        }
+        .action-container {
+          grid-template-columns: repeat(2, 1fr); /* Two columns for actions */
         }
       }
     </style>
@@ -717,7 +725,7 @@
 
       // Vibrate device if supported and enabled
       function vibrateDevice(pattern = 50) {
-        if ('vibrate' in navigator && vibrationToggle.checked) {
+        if (vibrationToggle.checked && 'vibrate' in navigator) {
           navigator.vibrate(pattern);
         }
       }
