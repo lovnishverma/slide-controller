@@ -410,15 +410,13 @@ pip install -r requirements.txt
 
 #### 4. **Enhance Security Note for HiveMQ**
 
-Add a caution under the credentials section:
-
 > 🔐 **Security Tip**: Avoid hardcoding sensitive credentials in code. Use environment variables (`os.environ.get()`) or a `.env` file with `python-dotenv` package.
 
 ---
 
-#### 5. **Clarify EXE Use Case**
+#### 5. **EXE Use Case**
 
-Explain that `subscriber.exe` is only needed on the system running PowerPoint.
+Note: `subscriber.exe` is only needed on the system running PowerPoint.
 
 ---
 
