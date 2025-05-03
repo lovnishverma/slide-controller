@@ -20,8 +20,8 @@ The **Slide Controller** is a responsive and user-friendly web application that 
 
 ## 🛠️ How It Works
 
-1. **Frontend (index.html)**: Web UI hosted on **Glitch** acts as the **MQTT publisher**.
-2. **Backend (server.py)**: Flask app serves the frontend and publishes MQTT messages.
+1. **Frontend (templates/index.html)**: Web UI hosted on **Glitch.com** acts as the **MQTT publisher**.
+2. **Backend (server.py)**: Flask app serves the frontend and publishes MQTT messages. Hosted on **Glitch.com**
 3. **Local Subscriber (subscriber.py)**: Listens to MQTT messages and uses `pyautogui` to simulate PowerPoint key presses.
 
 ---
