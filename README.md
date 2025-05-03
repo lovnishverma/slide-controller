@@ -34,6 +34,81 @@ The **Slide Controller** is a responsive and user-friendly web application that 
 * `server.py` – Flask app to serve frontend and publish MQTT messages
 * `subscriber.py` – Python MQTT client that receives commands and simulates keyboard input (run in host machine)
 
+To convert your `subscriber.py` into a `.exe` file that you can run on any Windows system, you can use **PyInstaller**.
+
+Here’s a **step-by-step guide** to create a `.exe` file:
+
+---
+
+### ✅ 1. **Install PyInstaller**
+
+Open a terminal or command prompt and install PyInstaller:
+
+```bash
+pip install pyinstaller
+```
+
+---
+
+### ✅ 2. **Navigate to your script directory**
+
+```bash
+cd path\to\your\script
+```
+
+Replace with the actual path where `subscriber.py` is saved.
+
+---
+
+### ✅ 3. **Create the .exe file**
+
+Run:
+
+```bash
+pyinstaller --onefile subscriber.py
+```
+
+* `--onefile` generates a single `.exe` file.
+* This creates a `dist` folder with `subscriber.exe` inside.
+
+If you don't want the terminal window to show up when running the EXE (i.e., background script), add `--noconsole`:
+
+```bash
+pyinstaller --onefile --noconsole subscriber.py
+```
+
+---
+
+### ✅ 4. **Run the EXE**
+
+Navigate to:
+
+```
+dist\subscriber.exe
+```
+
+Double-click it. It will connect to the MQTT broker and wait for commands.
+
+---
+
+### ✅ Optional: Add an icon
+
+If you want to add a custom icon:
+
+```bash
+pyinstaller --onefile --icon=your_icon.ico subscriber.py
+```
+
+---
+
+### ⚠️ Important Notes
+
+* Make sure the machine where you run the `.exe` has **PowerPoint installed and focused**.
+* PyAutoGUI may require the script to run with admin privileges if you're interacting with certain windows.
+* If packaging for another machine, ensure it has the same screen resolution and permissions.
+
+You can create a `subscriber.spec` file if you want to customize the build further.
+
 ### 🚀 **Deployment**
 
 * Flask app is deployed on **Glitch** for easy access and control from any device.
