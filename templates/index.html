@@ -287,6 +287,10 @@
         font-family: monospace;
         white-space: pre-wrap;
       }
+      /* Added vibration feedback */
+        body {
+            touch-action: manipulation;
+        }
     </style>
   </head>
   <body>
@@ -586,6 +590,52 @@
 
       // Start the app
       window.addEventListener("DOMContentLoaded", initApp);
+    </script>
+    <script>
+        // Vibration enhancements
+        function vibrateDevice(pattern = 50) {
+            if ('vibrate' in navigator && vibrationToggle.checked) {
+                navigator.vibrate(pattern);
+            }
+        }
+
+        // Enhanced sendCommand with vibration
+        function sendCommand(endpoint) {
+            if (!isConnected) return;
+            
+            // Add vibration feedback
+            if (endpoint === "/next" || endpoint === "/prev") {
+                vibrateDevice([50, 30, 50]); // Double vibration pattern
+            } else {
+                vibrateDevice(100);
+            }
+            
+            // Rest of existing sendCommand functionality...
+        }
+
+        // Motion detection with vibration
+        function handleMotion(event) {
+            // ... existing motion detection logic ...
+            if (isShake) {
+                sendCommand(direction);
+                vibrateDevice(80); // Add vibration on motion detection
+            }
+        }
+
+        // Theme toggle persistence
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('darkMode');
+            if (savedTheme) {
+                document.body.classList.toggle('dark-mode', savedTheme === 'true');
+                themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            }
+        });
+
+        // Added smooth transitions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(0.98)');
+            btn.addEventListener('mouseleave', () => btn.style.transform = 'none');
+        });
     </script>
   </body>
 </html>
