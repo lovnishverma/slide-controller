@@ -544,3 +544,96 @@ Please do contribute:
 ```
 
 ---
+---
+
+### 💻 Run Subscriber Script or Convert to EXE
+
+To control your slides locally, run the `subscriber.py` script on the machine where PowerPoint (or any slide software) is running.
+
+#### Option A: Run Python Script (Recommended for developers)
+
+Make sure Python 3 and required packages are installed:
+
+```bash
+pip install paho-mqtt pyautogui
+```
+
+Then run:
+
+```bash
+python subscriber.py
+```
+
+> This script listens to MQTT messages and simulates `right arrow (→)` or `left arrow (←)` key presses based on the button you press on the web app.
+
+#### Option B: Use Precompiled Windows EXE
+
+For convenience (especially on Windows machines), use the provided `subscriber.exe`. Just double-click to run—no Python installation needed.
+
+> ✅ Tip: Add it to your startup folder to auto-run before presentations!
+
+---
+
+## 🔐 MQTT Setup (HiveMQ Cloud or Local)
+
+1. **Sign Up** on [HiveMQ Cloud](https://console.hivemq.cloud/).
+2. Create a new MQTT **broker instance**.
+3. Note the:
+
+   * **Broker URL**
+   * **Port** (8883 for TLS)
+   * **Username & Password**
+4. Update both `server.py` and `subscriber.py` with your broker credentials.
+
+```python
+# Example in server.py
+broker = "your-broker.hivemq.cloud"
+port = 8883
+username = "your-username"
+password = "your-password"
+topic = "slide/control"
+```
+
+---
+
+## 🎮 Controls Reference
+
+| Web Button  | MQTT Message | Action Performed                            |
+| ----------- | ------------ | ------------------------------------------- |
+| ⏭️ Next     | `next`       | Presses → arrow key                         |
+| ⏮️ Previous | `prev`       | Presses ← arrow key                         |
+| 🔄 Shake    | `shake`      | (Mapped to next/prev depending on settings) |
+
+---
+
+## 🔧 More Customization Ideas
+
+* ✅ **Add Slide Preview** using thumbnails.
+* 🎙️ **Add Voice Commands** using Web Speech API (`next slide`, `go back`).
+* 📶 **Offline Mode** using service workers + local WebSocket/MQTT broker.
+* 📱 **Mobile App Wrapper** using Tauri, Cordova, or PWA standards.
+* 🕹️ **Game Controller Support**—map Xbox/PS5 controller buttons to slide controls!
+
+---
+
+## 🤝 Contributing
+
+Contributions welcome! Fork the repo, make your changes, and submit a pull request.
+
+```bash
+git clone https://github.com/lovnishverma/slide-controller.git
+cd slide-controller
+# Make your changes and push!
+```
+
+---
+
+## 📄 Note my Creater of This Mr. Lovnish Verma
+
+Do whatever you want, but don't blame us if you break your projector 😉.
+
+---
+
+## 📢 Final Thoughts
+
+> Slide Controller isn't just about replacing a remote—it's about **democratizing control**, enabling anyone with a browser and internet connection to **seamlessly manage presentations**, automate classrooms, and invent new interfaces.
