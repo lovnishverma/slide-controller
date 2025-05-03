@@ -63,6 +63,8 @@ Deployed online? Use Glitch or another hosting platform to serve `server.py` and
 
 Convert `subscriber.py` to `.exe` using PyInstaller:
 
+To generate icon go to https://www.icoconverter.com/ upload .jpg or .png  and get your icon in .ico format
+
 ```bash
 pyinstaller --onefile --icon=slidecontrol.ico subscriber.py
 ```
@@ -358,11 +360,6 @@ Feel free to use and contribute!
 
 ---
 
-
-Here’s a polished version of your **💡 Future Works** section for your Glitch or GitHub `README.md`, styled consistently and grammatically improved:
-
----
-
 ### 💡 **Future Works**
 
 * **Add User Authentication**
@@ -373,4 +370,4 @@ Here’s a polished version of your **💡 Future Works** section for your Glitc
 
 ---
 
-Working a circuit diagram and Arduino code for the ESP8266-based pushbutton controller
+I'm Working a circuit diagram and Arduino code for the ESP8266-based pushbutton controller
