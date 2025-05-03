@@ -513,13 +513,13 @@
             <div class="action-button-icon">▶️</div>
             <span>Start</span>
           </button>
-          <button class="action-button" id="fullscreenButton">
+          <button class="action-button" id="exitButton">
             <div class="action-button-icon">⛶</div>
-            <span>Fullscreen</span>
+            <span>Exit Slideshow</span>
           </button>
-          <button class="action-button" id="blankButton">
+          <button class="action-button" id="currentButton">
             <div class="action-button-icon">⬛</div>
-            <span>Blank</span>
+            <span>Current Slideshow</span>
           </button>
         </div>
       </div>
@@ -601,8 +601,8 @@
       const prevButton = document.getElementById("prevButton");
       const nextButton = document.getElementById("nextButton");
       const startButton = document.getElementById("startButton");
-      const fullscreenButton = document.getElementById("fullscreenButton");
-      const blankButton = document.getElementById("blankButton");
+      const exitButton = document.getElementById("exitButton");
+      const currentButton = document.getElementById("currentButton");
       const prevRipple = document.getElementById("prevRipple");
       const nextRipple = document.getElementById("nextRipple");
       const shakeToggle = document.getElementById("shakeToggle");
@@ -744,8 +744,8 @@
           endpoint === "/next" ? "Next slide" : 
           endpoint === "/prev" ? "Previous slide" :
           endpoint === "/start" ? "Starting presentation" :
-          endpoint === "/fullscreen" ? "Toggling fullscreen" :
-          endpoint === "/blank" ? "Toggling blank screen" :
+          endpoint === "/exit" ? "Toggling exit" :
+          endpoint === "/current" ? "Toggling current screen" :
           "Command sent"
         );
         // Vibrate feedback
@@ -780,8 +780,8 @@
         });
         // Additional controls
         startButton.addEventListener("click", () => sendCommand("/start"));
-        fullscreenButton.addEventListener("click", () => sendCommand("/fullscreen"));
-        blankButton.addEventListener("click", () => sendCommand("/blank"));
+        exitButton.addEventListener("click", () => sendCommand("/exit"));
+        currentButton.addEventListener("click", () => sendCommand("/current"));
         // Toggle shake feature
         shakeToggle.addEventListener("change", function () {
           sensitivityControl.classList.toggle("visible", this.checked);
@@ -828,9 +828,9 @@
             createRipple(prevButton, prevRipple);
             sendCommand("/prev");
           } else if (e.key === "b" || e.key === "B") {
-            sendCommand("/blank");
+            sendCommand("/current");
           } else if (e.key === "f" || e.key === "F") {
-            sendCommand("/fullscreen");
+            sendCommand("/exit");
           } else if (e.key === "s" || e.key === "S") {
             sendCommand("/start");
           }

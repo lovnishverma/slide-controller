@@ -38,6 +38,16 @@ def prev_slide():
 def start_presentation():
     send_mqtt_command("start")
     return redirect(url_for("index"))
+  
+@app.route("/exit")
+def exit_presentation():
+    send_mqtt_command("exit")
+    return redirect(url_for("index"))
+
+@app.route("/current")
+def current_presentation():
+    send_mqtt_command("current")
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run()
