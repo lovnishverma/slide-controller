@@ -1,4 +1,4 @@
-# mqtt_slide_control.py
+# Run This Script in Host machine or make it's .exe file using PyInstaller https://pyinstaller.org/en/stable/ and run that only
 import paho.mqtt.client as mqtt
 import pyautogui
 import ssl
