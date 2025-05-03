@@ -4,11 +4,11 @@ import ssl
 
 app = Flask(__name__)
 
-MQTT_HOST = "95bd7f2a55ad4dd799618a95837e4303.s1.eu.hivemq.cloud"
+MQTT_HOST = "95bd7f2a55ad4dd799618axxxxxxxx.s1.eu.hivemq.cloud"
 MQTT_PORT = 8883
-MQTT_USERNAME = "lovnish"
-MQTT_PASSWORD = "Nielit@123"
-MQTT_TOPIC = "presentation/control"
+MQTT_USERNAME = "lovxxxx"
+MQTT_PASSWORD = "Secxxxx"
+MQTT_TOPIC = "presentation/controlsystem"
 
 def send_mqtt_command(command):
     publish.single(
