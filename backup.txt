@@ -621,6 +621,7 @@
       const themeToggle = document.getElementById("themeToggle");
       const batteryLevel = document.getElementById("batteryLevel");
       const batteryText = document.getElementById("batteryText");
+
       // Variables
       let shakeThreshold = parseInt(sensitivitySlider.value);
       let lastShakeTime = 0;
@@ -717,7 +718,7 @@
 
       // Vibrate device if supported and enabled
       function vibrateDevice(pattern = 50) {
-        if ('vibrate' in navigator && vibrationToggle.checked) {
+        if (vibrationToggle.checked && 'vibrate' in navigator) {
           navigator.vibrate(pattern);
         }
       }
