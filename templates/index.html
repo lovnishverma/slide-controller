@@ -1,555 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Slide Controller</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="https://cdn.glitch.global/013485b8-c00b-4320-8437-1a8188decd86/NIELIT?v=1746277897638">
-  <style>
-    :root {
-      --primary: #4285F4;
-      --primary-dark: #3367D6;
-      --success: #34A853;
-      --background: #f8f9fa;
-      --card: #ffffff;
-      --text: #202124;
-      --text-secondary: #5f6368;
-      --border-radius: 16px;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Slide Controller</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn.glitch.global/013485b8-c00b-4320-8437-1a8188decd86/NIELIT?v=1746277897638"
+    />
+    <style>
+      :root {
+        --primary: #4285f4;
+        --primary-dark: #3367d6;
+        --success: #34a853;
+        --background: #f8f9fa;
+        --card: #ffffff;
+        --text: #202124;
+        --text-secondary: #5f6368;
+        --border-radius: 16px;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: var(--background);
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      color: var(--text);
-    }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: var(--background);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        color: var(--text);
+      }
 
-    .app-container {
-      width: 100%;
-      max-width: 500px;
-      background: var(--card);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      padding: 24px;
-      margin-top: 40px;
-    }
+      .app-container {
+        width: 100%;
+        max-width: 500px;
+        background: var(--card);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 24px;
+        margin-top: 40px;
+      }
 
-.app-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 20px;
-}
+      .app-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 20px;
+      }
 
-.app-icon img {
-  width: 60px;       /* Adjust size as needed */
-  height: 60px;
-  object-fit: contain;
-  border-radius: 8px; /* Optional: for rounded corners */
-}
+      .app-icon img {
+        width: 80px; /* Adjust size as needed */
+        height: 80px;
+        object-fit: contain;
+        border-radius: 8px; /* Optional: for rounded corners */
+      }
 
-    h1 {
-      font-size: 24px;
-      margin: 0;
-      font-weight: 600;
-    }
+      h1 {
+        font-size: 24px;
+        margin: 0;
+        font-weight: 600;
+      }
 
-    .status-indicator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 30px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      background: rgba(0, 0, 0, 0.05);
-      padding: 10px 16px;
-      border-radius: 20px;
-    }
+      .status-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        font-size: 14px;
+        color: var(--text-secondary);
+        background: rgba(0, 0, 0, 0.05);
+        padding: 10px 16px;
+        border-radius: 20px;
+      }
 
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #ccc;
-      margin-right: 8px;
-      transition: background-color 0.3s;
-    }
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin-right: 8px;
+        transition: background-color 0.3s;
+      }
 
-    .status-connected {
-      background-color: var(--success);
-    }
+      .status-connected {
+        background-color: var(--success);
+      }
 
-    .button-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 30px;
-    }
+      .button-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 30px;
+      }
 
-    .control-button {
-      padding: 20px;
-      font-size: 18px;
-      border: none;
-      border-radius: var(--border-radius);
-      color: #fff;
-      background-color: var(--primary);
-      box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
-      transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+      .control-button {
+        padding: 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: var(--border-radius);
+        color: #fff;
+        background-color: var(--primary);
+        box-shadow: 0 2px 6px rgba(66, 133, 244, 0.3);
+        transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
 
-    .control-button:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(66, 133, 244, 0.4);
-    }
+      .control-button:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(66, 133, 244, 0.4);
+      }
 
-    .control-button:active {
-      transform: translateY(1px);
-      box-shadow: 0 1px 2px rgba(66, 133, 244, 0.4);
-    }
+      .control-button:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 2px rgba(66, 133, 244, 0.4);
+      }
 
-    .button-icon {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
+      .button-icon {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
 
-    .settings-section {
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      padding-top: 20px;
-    }
+      .settings-section {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 20px;
+      }
 
-    .settings-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
+      .settings-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
 
-    .setting-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
+      .setting-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
 
-    .setting-label {
-      font-size: 15px;
-      color: var(--text);
-    }
+      .setting-label {
+        font-size: 15px;
+        color: var(--text);
+      }
 
-    .setting-description {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
+      .setting-description {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-top: 4px;
+      }
 
-    .toggle-switch {
-      position: relative;
-      display: inline-block;
-      width: 50px;
-      height: 26px;
-    }
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 26px;
+      }
 
-    .toggle-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
 
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0; left: 0;
-      right: 0; bottom: 0;
-      background-color: #ccc;
-      transition: .3s;
-      border-radius: 26px;
-    }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.3s;
+        border-radius: 26px;
+      }
 
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 20px; width: 20px;
-      left: 3px; bottom: 3px;
-      background-color: white;
-      transition: .3s;
-      border-radius: 50%;
-    }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.3s;
+        border-radius: 50%;
+      }
 
-    input:checked + .slider {
-      background-color: var(--success);
-    }
+      input:checked + .slider {
+        background-color: var(--success);
+      }
 
-    input:checked + .slider:before {
-      transform: translateX(24px);
-    }
+      input:checked + .slider:before {
+        transform: translateX(24px);
+      }
 
-    .sensitivity-control {
-      margin-top: 16px;
-      display: none;
-    }
+      .sensitivity-control {
+        margin-top: 16px;
+        display: none;
+      }
 
-    .sensitivity-control.visible {
-      display: block;
-    }
+      .sensitivity-control.visible {
+        display: block;
+      }
 
-    .sensitivity-slider {
-      width: 100%;
-      -webkit-appearance: none;
-      height: 6px;
-      border-radius: 3px;
-      background: #ddd;
-      outline: none;
-      margin: 10px 0;
-    }
+      .sensitivity-slider {
+        width: 100%;
+        -webkit-appearance: none;
+        height: 6px;
+        border-radius: 3px;
+        background: #ddd;
+        outline: none;
+        margin: 10px 0;
+      }
 
-    .sensitivity-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--primary);
-      cursor: pointer;
-    }
+      .sensitivity-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--primary);
+        cursor: pointer;
+      }
 
-    .sensitivity-slider::-moz-range-thumb {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--primary);
-      cursor: pointer;
-    }
+      .sensitivity-slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--primary);
+        cursor: pointer;
+      }
 
-    .sensitivity-value {
-      text-align: right;
-      font-size: 13px;
-      color: var(--text-secondary);
-    }
+      .sensitivity-value {
+        text-align: right;
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
 
-    .feedback-toast {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-size: 14px;
-      opacity: 0;
-      transition: transform 0.3s, opacity 0.3s;
-      z-index: 100;
-    }
+      .feedback-toast {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-size: 14px;
+        opacity: 0;
+        transition: transform 0.3s, opacity 0.3s;
+        z-index: 100;
+      }
 
-    .feedback-toast.visible {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-    }
+      .feedback-toast.visible {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
 
-    .debug-panel {
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 8px;
-      padding: 10px;
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--text-secondary);
-      width: 100%;
-      display: none;
-    }
+      .debug-panel {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        padding: 10px;
+        margin-top: 20px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        width: 100%;
+        display: none;
+      }
 
-    .debug-panel.visible {
-      display: block;
-    }
+      .debug-panel.visible {
+        display: block;
+      }
 
-    #accelData {
-      margin-top: 6px;
-      font-family: monospace;
-      white-space: pre-wrap;
-    }
-  </style>
-</head>
-<body>
-  <div class="app-container">
-    <div class="app-header">
-      <div class="app-icon"><img src="https://cdn.glitch.global/013485b8-c00b-4320-8437-1a8188decd86/NIELIT?v=1746277897638"></div>
-      <h1>NIELIT Slide Controller</h1>
-    </div>
-
-    <div class="status-indicator">
-      <div class="status-dot" id="connectionStatus"></div>
-      <span id="statusText">Ready to connect</span>
-    </div>
-
-    <div class="button-container">
-      <button class="control-button" id="prevButton">
-        <div class="button-icon">⬅️</div>
-        <span>Previous</span>
-      </button>
-      <button class="control-button" id="nextButton">
-        <div class="button-icon">➡️</div>
-        <span>Next</span>
-      </button>
-    </div>
-
-    <div class="settings-section">
-      <div class="settings-title">Settings</div>
-      
-      <div class="setting-item">
-        <div>
-          <div class="setting-label">Motion Control</div>
-          <div class="setting-description">Change slides by shaking your device</div>
+      #accelData {
+        margin-top: 6px;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="app-header">
+        <div class="app-icon">
+          <img
+            src="https://cdn.glitch.global/013485b8-c00b-4320-8437-1a8188decd86/NIELIT?v=1746277897638"
+          />
         </div>
-        <label class="toggle-switch">
-          <input type="checkbox" id="shakeToggle">
-          <span class="slider"></span>
-        </label>
+        <h1>NIELIT Slide Controller</h1>
       </div>
 
-      <div class="sensitivity-control" id="sensitivityControl">
-        <div class="setting-label">Motion Sensitivity</div>
-        <input type="range" min="5" max="25" value="15" class="sensitivity-slider" id="sensitivitySlider">
-        <div class="sensitivity-value">Medium (15)</div>
+      <div class="status-indicator">
+        <div class="status-dot" id="connectionStatus"></div>
+        <span id="statusText">Ready to connect</span>
       </div>
 
-      <div class="setting-item">
-        <div>
-          <div class="setting-label">Debug Mode</div>
-          <div class="setting-description">Show motion data for troubleshooting</div>
+      <div class="button-container">
+        <button class="control-button" id="prevButton">
+          <div class="button-icon">⬅️</div>
+          <span>Previous</span>
+        </button>
+        <button class="control-button" id="nextButton">
+          <div class="button-icon">➡️</div>
+          <span>Next</span>
+        </button>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-title">Settings</div>
+
+        <div class="setting-item">
+          <div>
+            <div class="setting-label">Motion Control</div>
+            <div class="setting-description">
+              Change slides by shaking your device
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="shakeToggle" />
+            <span class="slider"></span>
+          </label>
         </div>
-        <label class="toggle-switch">
-          <input type="checkbox" id="debugToggle">
-          <span class="slider"></span>
-        </label>
+
+        <div class="sensitivity-control" id="sensitivityControl">
+          <div class="setting-label">Motion Sensitivity</div>
+          <input
+            type="range"
+            min="5"
+            max="25"
+            value="15"
+            class="sensitivity-slider"
+            id="sensitivitySlider"
+          />
+          <div class="sensitivity-value">Medium (15)</div>
+        </div>
+
+        <div class="setting-item">
+          <div>
+            <div class="setting-label">Debug Mode</div>
+            <div class="setting-description">
+              Show motion data for troubleshooting
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="debugToggle" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="debug-panel" id="debugPanel">
+        <div>Motion Data:</div>
+        <div id="accelData">No data yet</div>
       </div>
     </div>
 
-    <div class="debug-panel" id="debugPanel">
-      <div>Motion Data:</div>
-      <div id="accelData">No data yet</div>
-    </div>
-  </div>
+    <div class="feedback-toast" id="feedbackToast">Command sent</div>
 
-  <div class="feedback-toast" id="feedbackToast">Command sent</div>
+    <script>
+      // Elements
+      const prevButton = document.getElementById("prevButton");
+      const nextButton = document.getElementById("nextButton");
+      const shakeToggle = document.getElementById("shakeToggle");
+      const sensitivityControl = document.getElementById("sensitivityControl");
+      const sensitivitySlider = document.getElementById("sensitivitySlider");
+      const sensitivityValue = document.querySelector(".sensitivity-value");
+      const debugToggle = document.getElementById("debugToggle");
+      const debugPanel = document.getElementById("debugPanel");
+      const accelData = document.getElementById("accelData");
+      const feedbackToast = document.getElementById("feedbackToast");
+      const connectionStatus = document.getElementById("connectionStatus");
+      const statusText = document.getElementById("statusText");
 
-  <script>
-    // Elements
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-    const shakeToggle = document.getElementById('shakeToggle');
-    const sensitivityControl = document.getElementById('sensitivityControl');
-    const sensitivitySlider = document.getElementById('sensitivitySlider');
-    const sensitivityValue = document.querySelector('.sensitivity-value');
-    const debugToggle = document.getElementById('debugToggle');
-    const debugPanel = document.getElementById('debugPanel');
-    const accelData = document.getElementById('accelData');
-    const feedbackToast = document.getElementById('feedbackToast');
-    const connectionStatus = document.getElementById('connectionStatus');
-    const statusText = document.getElementById('statusText');
+      // Variables
+      let shakeThreshold = parseInt(sensitivitySlider.value);
+      let lastShakeTime = 0;
+      let lastX = 0,
+        lastY = 0,
+        lastZ = 0;
+      let moveCounter = 0;
+      let debugData = [];
+      let isConnected = false;
 
-    // Variables
-    let shakeThreshold = parseInt(sensitivitySlider.value);
-    let lastShakeTime = 0;
-    let lastX = 0, lastY = 0, lastZ = 0;
-    let moveCounter = 0;
-    let debugData = [];
-    let isConnected = false;
+      // Check if device motion is available
+      function checkDeviceMotion() {
+        if (window.DeviceMotionEvent) {
+          // Set initial state and simulate connection
+          setTimeout(() => {
+            connectionStatus.classList.add("status-connected");
+            statusText.textContent = "Connected";
+            isConnected = true;
+          }, 1000);
+        } else {
+          statusText.textContent = "Motion sensors not available";
+          shakeToggle.disabled = true;
+        }
+      }
 
-    // Check if device motion is available
-    function checkDeviceMotion() {
-      if (window.DeviceMotionEvent) {
-        // Set initial state and simulate connection
+      // Show toast feedback
+      function showToast(message) {
+        feedbackToast.textContent = message;
+        feedbackToast.classList.add("visible");
         setTimeout(() => {
-          connectionStatus.classList.add('status-connected');
-          statusText.textContent = 'Connected';
-          isConnected = true;
-        }, 1000);
-      } else {
-        statusText.textContent = 'Motion sensors not available';
-        shakeToggle.disabled = true;
-      }
-    }
-
-    // Show toast feedback
-    function showToast(message) {
-      feedbackToast.textContent = message;
-      feedbackToast.classList.add('visible');
-      setTimeout(() => {
-        feedbackToast.classList.remove('visible');
-      }, 2000);
-    }
-
-    // Send command function with feedback
-    function sendCommand(endpoint) {
-      if (!isConnected) {
-        showToast('Not connected');
-        return;
+          feedbackToast.classList.remove("visible");
+        }, 2000);
       }
 
-      // Log the command
-      console.log("Sending command:", endpoint);
-      
-      // Show success message without waiting for fetch result
-      showToast(endpoint === '/next' ? 'Next slide' : 'Previous slide');
-      
-      // Try to fetch but ignore errors - slide functionality will work regardless
-      fetch(endpoint)
-        .then(res => {
-          console.log("Command sent successfully:", endpoint);
-        })
-        .catch(err => {
-          // Don't show error to the user since the presentation control may be working anyway
-          console.log("Fetch request failed, but slide functionality may still be working");
-        });
-    }
-
-    // Initialize event listeners
-    function initEvents() {
-      // Button clicks
-      prevButton.addEventListener('click', () => sendCommand('/prev'));
-      nextButton.addEventListener('click', () => sendCommand('/next'));
-
-      // Toggle shake feature
-      shakeToggle.addEventListener('change', function() {
-        sensitivityControl.classList.toggle('visible', this.checked);
-        if (this.checked && !isGyroscopePermissionGranted) {
-          requestDeviceMotionPermission();
+      // Send command function with feedback
+      function sendCommand(endpoint) {
+        if (!isConnected) {
+          showToast("Not connected");
+          return;
         }
-      });
 
-      // Sensitivity slider
-      sensitivitySlider.addEventListener('input', function() {
-        shakeThreshold = parseInt(this.value);
-        let sensitivityText = '';
+        // Log the command
+        console.log("Sending command:", endpoint);
 
-        if (shakeThreshold <= 8) sensitivityText = 'High';
-        else if (shakeThreshold <= 15) sensitivityText = 'Medium';
-        else sensitivityText = 'Low';
+        // Show success message without waiting for fetch result
+        showToast(endpoint === "/next" ? "Next slide" : "Previous slide");
 
-        sensitivityValue.textContent = `${sensitivityText} (${shakeThreshold})`;
-      });
-
-      // Debug toggle
-      debugToggle.addEventListener('change', function() {
-        debugPanel.classList.toggle('visible', this.checked);
-      });
-
-      // Setup device motion event
-      setupDeviceMotion();
-    }
-
-    // Request permission for DeviceMotion on iOS 13+
-    let isGyroscopePermissionGranted = false;
-    function requestDeviceMotionPermission() {
-      if (typeof DeviceMotionEvent !== 'undefined' && 
-          typeof DeviceMotionEvent.requestPermission === 'function') {
-        DeviceMotionEvent.requestPermission()
-          .then(response => {
-            if (response === 'granted') {
-              isGyroscopePermissionGranted = true;
-              window.addEventListener('devicemotion', handleMotion);
-              statusText.textContent = 'Motion access granted';
-            } else {
-              shakeToggle.checked = false;
-              statusText.textContent = 'Motion access denied';
-            }
+        // Try to fetch but ignore errors - slide functionality will work regardless
+        fetch(endpoint)
+          .then((res) => {
+            console.log("Command sent successfully:", endpoint);
           })
-          .catch(console.error);
-      } else {
-        // No permission needed (non-iOS or older iOS)
-        isGyroscopePermissionGranted = true;
-      }
-    }
-
-    // Setup device motion detection
-    function setupDeviceMotion() {
-      // For iOS 13+ we need to wait for user interaction
-      if (typeof DeviceMotionEvent !== 'undefined' && 
-          typeof DeviceMotionEvent.requestPermission === 'function') {
-        // iOS 13+ - will request permission when toggle is clicked
-      } else {
-        // No permission needed
-        window.addEventListener('devicemotion', handleMotion);
-        isGyroscopePermissionGranted = true;
-      }
-    }
-
-    // Handle motion events
-    function handleMotion(event) {
-      if (!shakeToggle.checked) return;
-
-      const acc = event.accelerationIncludingGravity;
-      if (!acc || acc.x === null) return;
-
-      const x = acc.x;
-      const y = acc.y;
-      const z = acc.z;
-
-      // Calculate difference from last values
-      const deltaX = Math.abs(x - lastX);
-      const deltaY = Math.abs(y - lastY);
-      const deltaZ = Math.abs(z - lastZ);
-
-      // Update last values
-      lastX = x;
-      lastY = y;
-      lastZ = z;
-
-      // Detect shake using delta acceleration
-      const speed = deltaX + deltaY + deltaZ;
-
-      // Update debug data
-      if (debugToggle.checked) {
-        debugData.unshift(`X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}, Speed: ${speed.toFixed(2)}`);
-        if (debugData.length > 5) debugData.pop();
-        accelData.textContent = debugData.join('\n');
+          .catch((err) => {
+            // Don't show error to the user since the presentation control may be working anyway
+            console.log(
+              "Fetch request failed, but slide functionality may still be working"
+            );
+          });
       }
 
-      // Check if shake exceeds threshold
-      if (speed > shakeThreshold) {
-        moveCounter++;
-        
-        // Require multiple consecutive movements to trigger
-        if (moveCounter > 2) {
-          const now = Date.now();
-          if (now - lastShakeTime > 1000) {
-            lastShakeTime = now;
-            moveCounter = 0;
-            console.log("Shake detected, sending 'next'");
-            sendCommand('/next');
-            
-            // Visual feedback on shake detection
-            document.body.style.backgroundColor = '#f0f5ff';
-            setTimeout(() => {
-              document.body.style.backgroundColor = '';
-            }, 300);
+      // Initialize event listeners
+      function initEvents() {
+        // Button clicks
+        prevButton.addEventListener("click", () => sendCommand("/prev"));
+        nextButton.addEventListener("click", () => sendCommand("/next"));
+
+        // Toggle shake feature
+        shakeToggle.addEventListener("change", function () {
+          sensitivityControl.classList.toggle("visible", this.checked);
+          if (this.checked && !isGyroscopePermissionGranted) {
+            requestDeviceMotionPermission();
           }
-        }
-      } else {
-        // Reset counter if movement is small
-        moveCounter = 0;
+        });
+
+        // Sensitivity slider
+        sensitivitySlider.addEventListener("input", function () {
+          shakeThreshold = parseInt(this.value);
+          let sensitivityText = "";
+
+          if (shakeThreshold <= 8) sensitivityText = "High";
+          else if (shakeThreshold <= 15) sensitivityText = "Medium";
+          else sensitivityText = "Low";
+
+          sensitivityValue.textContent = `${sensitivityText} (${shakeThreshold})`;
+        });
+
+        // Debug toggle
+        debugToggle.addEventListener("change", function () {
+          debugPanel.classList.toggle("visible", this.checked);
+        });
+
+        // Setup device motion event
+        setupDeviceMotion();
       }
-    }
 
-    // Initialize the app
-    function initApp() {
-      checkDeviceMotion();
-      initEvents();
-    }
+      // Request permission for DeviceMotion on iOS 13+
+      let isGyroscopePermissionGranted = false;
+      function requestDeviceMotionPermission() {
+        if (
+          typeof DeviceMotionEvent !== "undefined" &&
+          typeof DeviceMotionEvent.requestPermission === "function"
+        ) {
+          DeviceMotionEvent.requestPermission()
+            .then((response) => {
+              if (response === "granted") {
+                isGyroscopePermissionGranted = true;
+                window.addEventListener("devicemotion", handleMotion);
+                statusText.textContent = "Motion access granted";
+              } else {
+                shakeToggle.checked = false;
+                statusText.textContent = "Motion access denied";
+              }
+            })
+            .catch(console.error);
+        } else {
+          // No permission needed (non-iOS or older iOS)
+          isGyroscopePermissionGranted = true;
+        }
+      }
 
-    // Start the app
-    window.addEventListener('DOMContentLoaded', initApp);
-  </script>
-</body>
+      // Setup device motion detection
+      function setupDeviceMotion() {
+        // For iOS 13+ we need to wait for user interaction
+        if (
+          typeof DeviceMotionEvent !== "undefined" &&
+          typeof DeviceMotionEvent.requestPermission === "function"
+        ) {
+          // iOS 13+ - will request permission when toggle is clicked
+        } else {
+          // No permission needed
+          window.addEventListener("devicemotion", handleMotion);
+          isGyroscopePermissionGranted = true;
+        }
+      }
+
+      // Handle motion events
+      function handleMotion(event) {
+        if (!shakeToggle.checked) return;
+
+        const acc = event.accelerationIncludingGravity;
+        if (!acc || acc.x === null) return;
+
+        const x = acc.x;
+        const y = acc.y;
+        const z = acc.z;
+
+        // Calculate difference from last values
+        const deltaX = Math.abs(x - lastX);
+        const deltaY = Math.abs(y - lastY);
+        const deltaZ = Math.abs(z - lastZ);
+
+        // Update last values
+        lastX = x;
+        lastY = y;
+        lastZ = z;
+
+        // Detect shake using delta acceleration
+        const speed = deltaX + deltaY + deltaZ;
+
+        // Update debug data
+        if (debugToggle.checked) {
+          debugData.unshift(
+            `X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(
+              2
+            )}, Speed: ${speed.toFixed(2)}`
+          );
+          if (debugData.length > 5) debugData.pop();
+          accelData.textContent = debugData.join("\n");
+        }
+
+        // Check if shake exceeds threshold
+        if (speed > shakeThreshold) {
+          moveCounter++;
+
+          // Require multiple consecutive movements to trigger
+          if (moveCounter > 2) {
+            const now = Date.now();
+            if (now - lastShakeTime > 1000) {
+              lastShakeTime = now;
+              moveCounter = 0;
+              console.log("Shake detected, sending 'next'");
+              sendCommand("/next");
+
+              // Visual feedback on shake detection
+              document.body.style.backgroundColor = "#f0f5ff";
+              setTimeout(() => {
+                document.body.style.backgroundColor = "";
+              }, 300);
+            }
+          }
+        } else {
+          // Reset counter if movement is small
+          moveCounter = 0;
+        }
+      }
+
+      // Initialize the app
+      function initApp() {
+        checkDeviceMotion();
+        initEvents();
+      }
+
+      // Start the app
+      window.addEventListener("DOMContentLoaded", initApp);
+    </script>
+  </body>
 </html>
