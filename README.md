@@ -250,7 +250,7 @@ client.connect(BROKER, PORT)
 
 ---
 
-### ⚙️ Option 2: Use Local Mosquitto Broker
+### ⚙️ Option 2: Use Local Mosquitto Broker (for advanced users only)
 
 #### Install on Windows/Linux:
 
@@ -281,20 +281,24 @@ Set `BROKER = "localhost"` and `PORT = 1883` in your scripts.
 
 * You can add gestures, voice, or phone sensors to enhance control.
 * Ensure subscriber script runs with proper screen access.
-* Web UI can be hosted on any static site host or Glitch.
+* Web UI (flask app) can be hosted on pythonanywhere.com or Glitch.com.
 
 ---
 
 ## 📸 Screenshots
 
+ **Slide Controller Flask App using MQTT**
+Web UI Running on android or ios phone to control host machine:
 ![image](https://github.com/user-attachments/assets/24111d5c-0497-42dc-aaab-ec9ba812dbf8)
 
+ **Subscribe.exe running on Host Machine**
 
 ![image](https://github.com/user-attachments/assets/a2d327c5-0461-457e-8442-c6b9d678527c)
 
 ---
- **Slide Controller Flask App using MQTT**
----
+
+![346560f29b3e06f6ee0c598868a3e9cef7314c59](https://github.com/user-attachments/assets/f83b68ce-e3cd-4a22-97fe-55db855ae51b)
+
 
 ## 🚀 **Glitch Deployment Guide – Slide Controller Web App**
 
