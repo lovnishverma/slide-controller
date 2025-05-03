@@ -922,5 +922,31 @@
       // Start the app
       window.addEventListener("DOMContentLoaded", initApp);
     </script>
+   <script>
+    let wakeLock = null;
+
+    async function requestWakeLock() {
+      try {
+        if ('wakeLock' in navigator) {
+          wakeLock = await navigator.wakeLock.request('screen');
+          console.log("Wake Lock is active");
+
+          // Re-acquire the lock when visibility changes (e.g., switching tabs)
+          document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible') {
+              wakeLock = await navigator.wakeLock.request('screen');
+            }
+          });
+        } else {
+          console.log("Wake Lock API not supported.");
+        }
+      } catch (err) {
+        console.error(`${err.name}, ${err.message}`);
+      }
+    }
+
+    // Request wake lock when the page loads
+    requestWakeLock();
+  </script>
 </body>
 </html>
