@@ -323,21 +323,19 @@ You’ll host the `server.py` Flask app (MQTT Publisher) along with its frontend
 
 ---
 
-### 2️⃣ **Create a New Project**
+### 2️⃣ **Remix my Python3 Starter Project**
 
-* Click **“New Project” → “Hello-Express”** (Glitch supports Node.js by default).
-* Rename the project to something like `slide-controller`.
+**Go to This Project**  [Python3 Starter Project](https://glitch.com/~python3flask-python-3)
 
----
+* Click **“Remix Another**
 
-### 3️⃣ **Delete Existing Files**
+![image](https://github.com/user-attachments/assets/a2082fb7-cca4-449b-87da-bae9b99713a1)
 
-Delete these default files from Glitch:
+  
+### 3️⃣ Rename the project to something like `slide-controller`.
+To rename click on settings and then edit project details
 
-* `server.js`
-* `package.json`
-* `public/`
-* `views/`
+![image](https://github.com/user-attachments/assets/9c3c0719-89e3-4216-b163-74a21ed15523)
 
 ---
 
@@ -350,48 +348,15 @@ Upload or manually create the following files:
 
   ```txt
   Flask
-  paho-mqtt
+  paho-mqtt==1.6.1
   ```
-* `index.html` – Your frontend controller page
-* `start.sh` – A custom shell script to launch your Flask app
+* `templates/index.html` – Your frontend controller page
+* `server.py` – Add your app code in this file.
 * `.glitch-assets` – (optional) For storing any media/assets if needed
 
-#### Example `start.sh` content:
-
-```bash
-#!/bin/bash
-export FLASK_APP=server.py
-export FLASK_RUN_HOST=0.0.0.0
-export FLASK_RUN_PORT=3000
-pip install -r requirements.txt
-flask run
-```
-
-Make it executable:
-
-1. Click the **“Tools”** button on the bottom left
-2. Open **Terminal**
-3. Run:
-
-   ```bash
-   chmod +x start.sh
-   ```
-
 ---
 
-### 5️⃣ **Configure `glitch.json`**
-
-Create a new file called `glitch.json` to tell Glitch how to run your app:
-
-```json
-{
-  "start": "bash start.sh"
-}
-```
-
----
-
-### 6️⃣ **Update `.env` with MQTT Credentials**
+### 6️⃣ **Update `.env` with MQTT Credentials** (Optional)
 
 In `.env`, add your HiveMQ Cloud credentials or other broker info:
 
@@ -421,7 +386,8 @@ MQTT_PASSWORD = os.getenv("MQTT_PASSWORD")
 Once files are ready:
 
 * Click the **“Logs”** button to see output.
-* Glitch will auto-run `start.sh`.
+* Glitch will auto-run `server.py`.
+* Click on Preview then Open in new window
 * Visit the public link (e.g., `https://slide-controller.glitch.me`) to access your controller UI.
 
 ---
@@ -441,9 +407,9 @@ Once files are ready:
 ├── server.py           # Flask publisher
 ├── requirements.txt    # Python dependencies
 ├── templates/index.html          # UI frontend
-├── start.sh            # Start script
+├── README.md           # Readme file
 ├── glitch.json         # Glitch config
-├── .env                # MQTT credentials
+├── .env                # MQTT credentials (optional for security)
 ```
 
 ---
@@ -459,6 +425,9 @@ Once files are ready:
 
 ### 💡 **Future Works**
 
+* **Store Credentials in a .env File**
+  Enhance security by storing credentials in a .env file using the python-dotenv library.
+
 * **Add User Authentication**
   Implement login functionality to restrict access to the slide controller. This will enhance security, especially when the app is publicly hosted.
 
@@ -467,12 +436,12 @@ Once files are ready:
 
 ---
 
-Note: I'm Working a circuit diagram and Arduino code for the ESP8266-based pushbutton controller
+**Note**: I'm Working a circuit diagram and Arduino code for the ESP8266-based pushbutton controller
 
 ---
 
 
-#### 1. **GitHub Repository Link (available)**
+#### 1. **GitHub Repository Link (now available)**
 
 If you’re sharing this online:
 
