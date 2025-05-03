@@ -636,8 +636,6 @@
       let moveCounter = 0;
       let debugData = [];
       let isConnected = false;
-      let slideCount = 0;
-      let currentSlide = 1;
       let isDarkMode = false;
       let isGyroscopePermissionGranted = false;
 
@@ -650,12 +648,6 @@
             statusText.textContent = "Connected";
             connectionText.textContent = "Connected to presentation server";
             isConnected = true;
-            // Simulate getting slide info
-            setTimeout(() => {
-              slideCount = 20;
-              currentSlide = 1;
-              updateSlideInfo();
-            }, 500);
           }, 1500);
         } else {
           statusText.textContent = "Motion sensors not available";
@@ -697,13 +689,6 @@
         batteryText.textContent = `Battery: ${level}%${battery.charging ? ' (Charging)' : ''}`;
       }
 
-      // Update slide information
-      function updateSlideInfo() {
-        if (slideCount > 0) {
-          statusText.textContent = `Slide ${currentSlide}/${slideCount}`;
-        }
-      }
-
       // Show toast feedback
       function showToast(message) {
         feedbackToast.textContent = message;
@@ -738,14 +723,6 @@
         }
         // Log the command
         console.log("Sending command:", endpoint);
-        // Update slide counter
-        if (endpoint === "/next" && currentSlide < slideCount) {
-          currentSlide++;
-          updateSlideInfo();
-        } else if (endpoint === "/prev" && currentSlide > 1) {
-          currentSlide--;
-          updateSlideInfo();
-        }
         // Show success message without waiting for fetch result
         showToast(
           endpoint === "/next" ? "Next slide" : 
