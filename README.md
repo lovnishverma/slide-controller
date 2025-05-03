@@ -39,10 +39,10 @@ The **Slide Controller** is a responsive and user-friendly web application that 
 
 ```
 slide-controller/
-├── index.html          # Web UI
+├── templates/index.html          # Web UI
 ├── server.py           # Flask MQTT publisher
-├── subscriber.py       # Python MQTT subscriber
-└── slidecontrol.ico    # Optional EXE icon
+├── subscriber.py       # Python MQTT subscriber (run in local machine host machine)
+└── subscriber.exe    # Optional EXE file that you can run on windows pc
 ```
 
 ---
@@ -193,9 +193,7 @@ Set `BROKER = "localhost"` and `PORT = 1883` in your scripts.
 ![image](https://github.com/user-attachments/assets/a2d327c5-0461-457e-8442-c6b9d678527c)
 
 ---
-
-**complete Glitch deployment guide** tailored specifically for your **Slide Controller Flask App using MQTT**, perfect for inclusion in your `README.md` or as a separate `glitch-deployment.md`.
-
+ **Slide Controller Flask App using MQTT**
 ---
 
 ## 🚀 **Glitch Deployment Guide – Slide Controller Web App**
@@ -338,7 +336,7 @@ Once files are ready:
 /slide-controller (project root)
 ├── server.py           # Flask publisher
 ├── requirements.txt    # Python dependencies
-├── index.html          # UI frontend
+├── templates/index.html          # UI frontend
 ├── start.sh            # Start script
 ├── glitch.json         # Glitch config
 ├── .env                # MQTT credentials
