@@ -353,11 +353,6 @@ Once files are ready:
 * For better security, keep `.env` private (Glitch hides it from public views).
 
 
-## 📌 License
-
-This project is licensed under the MIT License.
-Feel free to use and contribute!
-
 ---
 
 ### 💡 **Future Works**
@@ -370,4 +365,112 @@ Feel free to use and contribute!
 
 ---
 
-I'm Working a circuit diagram and Arduino code for the ESP8266-based pushbutton controller
+Note: I'm Working a circuit diagram and Arduino code for the ESP8266-based pushbutton controller
+
+---
+
+
+#### 1. **GitHub Repository Link (available)**
+
+If you’re sharing this online:
+
+```markdown
+🔗 [View on GitHub](https://github.com/lovnishverma/slide-controller)
+```
+
+---
+
+#### 2. **Live Demo Section (On Glitch)**
+
+If the Glitch deployment is public:
+
+```markdown
+🚀 **Live Demo**: [https://remotecontroller.glitch.me](https://remotecontroller.glitch.me)
+```
+
+---
+
+#### 3. **Libraries `requirements.txt`**
+
+The dependencies to install:
+
+```txt
+Flask
+paho-mqtt
+pyautogui
+```
+
+And in your docs:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+#### 4. **Enhance Security Note for HiveMQ**
+
+Add a caution under the credentials section:
+
+> 🔐 **Security Tip**: Avoid hardcoding sensitive credentials in code. Use environment variables (`os.environ.get()`) or a `.env` file with `python-dotenv` package.
+
+---
+
+#### 5. **Clarify EXE Use Case**
+
+Explain that `subscriber.exe` is only needed on the system running PowerPoint.
+
+---
+
+#### 6. **Add Developer Notes or Customization Ideas**
+
+Let other developers know how they could extend it:
+
+```markdown
+### 🧩 Developer Notes
+
+* Add swipe detection with JavaScript for touch devices.
+* Integrate voice control via Web Speech API.
+* Use ESP8266 + accelerometer for physical gesture-based control.
+```
+
+---
+
+### 7. 📌 License
+
+This project is licensed under the MIT License.
+Feel free to use and contribute!
+
+
+---
+
+#### 8. **MQTT Troubleshooting Tips**
+
+Just in case:
+
+```markdown
+### 🧰 MQTT Troubleshooting
+
+* Check broker connectivity (try with `mosquitto_sub` and `mosquitto_pub`).
+* Verify correct topic and credentials.
+* Ensure `subscriber.py` has access to the screen.
+* Use `client.on_log()` to debug MQTT activity.
+```
+
+---
+
+#### 9. **Contribution Guidelines**
+
+Please do contribute:
+
+```markdown
+## 🤝 Contributing
+
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/cool-feature`)
+3. Commit your changes (`git commit -am 'Add cool feature'`)
+4. Push to the branch (`git push origin feature/cool-feature`)
+5. Open a Pull Request
+```
+
+---
