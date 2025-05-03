@@ -1,3 +1,6 @@
+![slide-controller](https://github.com/user-attachments/assets/5e1088ee-0f61-4086-9516-6475d13f5f83)
+
+
 ### **Slide Controller: Revolutionizing Remote Presentation Control with MQTT**  
 **Created by Lovnish Verma**  
 
