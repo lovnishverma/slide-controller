@@ -31,8 +31,8 @@ The **Slide Controller** is a responsive and user-friendly web application that 
 ### 📦 **Project Structure**
 
 * `index.html` – Frontend interface for controlling slides
-* `app.py` – Flask app to serve frontend and publish MQTT messages
-* `subscriber.py` – Python MQTT client that receives commands and simulates keyboard input
+* `server.py` – Flask app to serve frontend and publish MQTT messages
+* `subscriber.py` – Python MQTT client that receives commands and simulates keyboard input (run in host machine)
 
 ### 🚀 **Deployment**
 
