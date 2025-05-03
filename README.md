@@ -26,7 +26,7 @@ The **Slide Controller** is a responsive and user-friendly web application that 
 
 ---
 
-Here's the `requirements.txt` for your `server.py` script: Install in Local PC
+Here's the `requirements.txt` for your `subscriber.py` script: Install in Local PC
 
 ```txt
 paho-mqtt==1.6.1
@@ -84,9 +84,32 @@ slide-controller/
 
 ### 2. 💻 Run Subscriber Script or convert script to .exe file then run that...
 
-Convert `subscriber.py` to `.exe` using PyInstaller:
+To install **PyInstaller**, run the following command in your terminal:
 
-Note: To generate icon go to https://www.icoconverter.com/ upload .jpg or .png  and get your icon in .ico format
+```bash
+pip install pyinstaller
+```
+
+This will install the latest version of PyInstaller, which allows you to bundle your Python script into a standalone executable for your operating system.
+
+### To verify installation:
+
+```bash
+pyinstaller --version
+```
+
+### Basic usage to convert your script to an executable:
+
+```bash
+pyinstaller --onefile subscriber.py
+```
+
+This will create a `dist/subscriber` (or `.exe` on Windows) binary **you can run without needing Python installed.**
+
+
+To Convert `subscriber.py` to `.exe` with icon using PyInstaller:
+
+**Note:** To generate icon go to https://www.icoconverter.com/ upload .jpg or .png  and get your icon in .ico format
 
 ```bash
 pyinstaller --onefile --icon=slidecontrol.ico subscriber.py
