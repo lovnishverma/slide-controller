@@ -120,6 +120,9 @@ slide-controller/
 5. Create MQTT Credentials (Username & Password)
 6. Enable TLS/SSL
 
+![image](https://github.com/user-attachments/assets/472547c9-3e3b-456b-bea4-a5db7bd801c5)
+
+
 Example Code:
 ```python
 BROKER = "your-cluster-id.s2.eu.hivemq.cloud"
