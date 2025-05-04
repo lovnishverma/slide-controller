@@ -80,7 +80,6 @@ Tired of relying on expensive proprietary devices like the **[Logitech Wireless 
 | **GUI Configuration**       | Not available           | New Tkinter-based GUI for easy setup     |
 | **Configurable MQTT Setup** | Hardcoded               | Edit credentials live in GUI             |
 | **Themes Supported**        | Fixed UI                | Light, Dark, High Contrast               |
-| **Always-on-Top Window**    | Not available           | Toggle for easier presentation control   |
 
 ---
 
