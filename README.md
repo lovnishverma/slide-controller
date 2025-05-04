@@ -168,10 +168,6 @@ The new version introduces a **graphical user interface (GUI)** built with **Tki
   - **High Contrast Theme**
 - Apply changes instantly without restarting the app
 
-### 🖥️ Window Management
-- Toggle **Always On Top** option to keep the window visible during presentations
-- Resize and move the window freely
-
 ### 📡 Connection Status Indicator
 - Visual indicator showing MQTT connection status
 - Tooltip shows detailed status messages (e.g., "Connected", "Disconnected", "Auth Failed")
@@ -217,6 +213,7 @@ Install PyInstaller:
 ```bash
 pip install pyinstaller
 ```
+**Note:** To generate icon go to [icoconverter.com](https://www.icoconverter.com/) upload .jpg or .png  and get your icon in .ico format
 
 Convert to executable:
 ```bash
@@ -225,7 +222,7 @@ pyinstaller --onefile --icon=slidecontrol.ico --noconsole subscriber_version-2.0
 
 Run:
 ```bash
-dist\subscriber.exe
+dist\subscriber_version-2.0.exe
 ```
 
 ---
@@ -234,14 +231,14 @@ dist\subscriber.exe
 
 Install dependencies:
 ```bash
-pip install paho-mqtt pyautogui configparser
+pip install paho-mqtt pyautogui PyInstaller
 ```
 
 Or use `requirements.txt`:
 ```txt
 paho-mqtt
 pyautogui
-configparser
+PyInstaller
 ```
 
 ---
