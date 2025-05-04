@@ -21,8 +21,6 @@ Tired of relying on expensive proprietary devices like the **[Logitech Wireless 
 * 🔌 **Integration Ready**: Extendable for gesture, voice, or IoT triggers.
 * 🖥️ **Tkinter GUI (New in v2.0)**: A modern graphical interface for easy configuration and real-time feedback.
 * ⚙️ **MQTT Settings Customization (New in v2.0)**: Edit broker, port, username, password, and topic directly from the app without modifying code.
-* 🎨 **Theme Selection (New in v2.0)**: Choose between Light, Dark, and High Contrast themes for better visibility.
-* 📱 **Window Always On Top Option (New in v2.0)**: Keep the controller window visible during presentations.
 
 ---
 
@@ -104,7 +102,7 @@ slide-controller/
 ├── server.py                     # Flask MQTT publisher
 ├── subscriber.py                 # Legacy Python MQTT subscriber
 ├── subscriber_version-2.0.py     # New Tkinter-based MQTT subscriber
-└── subscriber.exe                # Optional EXE file (built from v2.0)
+└── subscriber.exe                # Optional EXE file (built from subscriber_version-2.0.py using PyInstaller)
 ```
 
 ---
@@ -290,7 +288,27 @@ Do whatever you want, but don't blame us if you break your projector 😉.
 
 ---
 
-🔗 [GitHub Repository](https://github.com/lovnishverma/slide-controller)  
-🚀 [Live Demo](https://remotecontroller.glitch.me)
+Here is a clean and well-formatted version of the requested section:
+
+---
+
+### 📚 Resources
+
+🔗 **GitHub Repository**:  
+[Slide Controller on GitHub](https://github.com/lovnishverma/slide-controller)  
+*Clone or contribute to the open-source project.*
+
+🚀 **Controller Web App (Source Code)**:  
+[Remix on Glitch – Remote Controller](https://glitch.com/~remotecontroller)  
+> 🔧 **Instructions**:  
+- Click **Remix** to create your own copy.  
+- Update the HiveMQ credentials in `server.py` or `.env` file with your own.  
+- The app will be live at `https://your-project-name.glitch.me`.
+
+📥 **Windows Executable (Host Machine)**:  
+[Download subscriber2.0.exe](https://www.mediafire.com/file/m5qn77efi33ekcq/subscriber2.0.exe/file)  
+> 📝 Default Login (for demo):  
+- **Username**: `admin`  
+- **Password**: `password`
 
 ---
