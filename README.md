@@ -299,7 +299,11 @@ Do whatever you want, but don't blame us if you break your projector 😉.
 [Remix on Glitch – Remote Controller](https://glitch.com/~remotecontroller)  
 > 🔧 **Instructions**:  
 - Click **Remix** to create your own copy.  
-- Update the HiveMQ credentials in `server.py` or `.env` file with your own.  
+- Update the [HiveMQ](https://www.hivemq.com/) credentials in `.env` file with your own.
+
+![image](https://github.com/user-attachments/assets/b9e00f71-50fb-425a-bc43-ad09a9ed3908)
+
+  
 - The app will be live at `https://your-project-name.glitch.me`.
 
 📥 **Windows Executable (Host Machine)**:  
@@ -307,5 +311,8 @@ Do whatever you want, but don't blame us if you break your projector 😉.
 > 📝 Default Login (for demo):  
 - **Username**: `admin`  
 - **Password**: `password`
+- Update the HiveMQ credentials from Settings tab
+
+![image](https://github.com/user-attachments/assets/8b04b7ef-ae83-4cf6-9192-6bdedca7da5e)
 
 ---
