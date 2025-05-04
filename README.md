@@ -288,10 +288,6 @@ Do whatever you want, but don't blame us if you break your projector 😉.
 
 ---
 
-Here is a clean and well-formatted version of the requested section:
-
----
-
 ### 📚 Resources
 
 🔗 **GitHub Repository**:  
