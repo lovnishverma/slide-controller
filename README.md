@@ -8,7 +8,7 @@
 
 ## 🌟 Introduction
 
-Tired of relying on expensive proprietary devices like the **[Logitech Wireless Presenter R400](https://amzn.in/d/hJ9VZkL)** to control your slides? Meet **Slide Controller** — a cutting-edge, open-source web application that turns your smartphone, tablet, or laptop into a **fully customizable, feature-rich presentation remote** — all for **FREE**!
+Tired of relying on expensive proprietary devices like the **Hardware Based Wireless Presenters** to control your slides? Meet **Slide Controller** — a cutting-edge, open-source web application that turns your smartphone, tablet, or laptop into a **fully customizable, feature-rich presentation remote** — all for **FREE**!
 
 ---
 
