@@ -272,8 +272,12 @@ configparser
 Web UI Running on Android or iOS phone to control host machine:  
 ![image](https://github.com/user-attachments/assets/24111d5c-0497-42dc-aaab-ec9ba812dbf8)
 
-**Subscriber v2.0 GUI Running on Host Machine**  
+**Subscriber v1.0 GUI Running on Host Machine**  
 ![image](https://github.com/user-attachments/assets/a2d327c5-0461-457e-8442-c6b9d678527c)
+
+**Subscriber v2.0 GUI Running on Host Machine** (Recommended)  
+![image](https://github.com/user-attachments/assets/9ef79c2f-3eb5-4ab3-a355-b5e379a4e76b)
+
 
 ---
 
