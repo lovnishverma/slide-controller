@@ -207,7 +207,7 @@ The new version introduces a **graphical user interface (GUI)** built with **Tki
 ## 🔄 Running the App
 
 ### Option 1: Run from Glitch
-🚀 Live Demo: [https://remotecontroller.glitch.me](https://remotecontroller.glitch.me)
+🚀 Live Demo: [https://slidecontroller.glitch.me](https://slidecontroller.glitch.me)
 
 ### Option 2: Run Subscriber Script or Convert to EXE
 
@@ -299,7 +299,7 @@ Do whatever you want, but don't blame us if you break your projector 😉.
 *Clone or contribute to the open-source project.*
 
 🚀 **Controller Web App (Source Code)**:  
-[Remix on Glitch – Remote Controller](https://glitch.com/~remotecontroller)  
+[Remix on Glitch – Slide Controller](https://glitch.com/~slidecontroller)  
 > 🔧 **Instructions**:  
 - Click **Remix** to create your own copy.  
 - Update the credentials in `.env` file with your own.
