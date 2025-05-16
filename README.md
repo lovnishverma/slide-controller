@@ -1,7 +1,7 @@
 # 📄 Documentation: Slide Controller – Revolutionizing Remote Presentation Control with MQTT  
 **Created by Lovnish Verma**
 ---
-
+This innovative tool offers a cost-effective and customizable solution for remote presentation control, leveraging MQTT for real-time communication.
 ![slide-controller](https://github.com/user-attachments/assets/5e1088ee-0f61-4086-9516-6475d13f5f83)
 
 ---
