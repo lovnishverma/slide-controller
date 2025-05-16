@@ -503,7 +503,7 @@
         </div>
       </div>
       <div class="section">
-        <div class="section-title">Presentation Controls</div>
+        <div class="section-title">{{username}} Presentation Controls</div>
         <div class="button-container">
           <button class="control-button" id="prevButton">
             <div class="button-ripple" id="prevRipple"></div>
@@ -594,6 +594,11 @@
           </div>
           <span id="batteryText">Battery: 80%</span>
         </div>
+        <div>
+          <center>
+            <a style="color: white; background-color: red; padding: 10px 20px; text-decoration: none; border-radius: 5px;" href="{{ url_for('logout') }}">Logout</a>
+          </center>
+        </div>
       </div>
       <div class="debug-panel" id="debugPanel">
         <div>Motion Data:</div>
@@ -638,7 +643,6 @@
       let isConnected = false;
       let isDarkMode = false;
       let isGyroscopePermissionGranted = false;
-
       // Check if device motion is available
       function checkDeviceMotion() {
         if (window.DeviceMotionEvent) {
@@ -658,7 +662,6 @@
         // Check battery level
         checkBattery();
       }
-
       // Check battery status if available
       function checkBattery() {
         if ('getBattery' in navigator) {
@@ -673,7 +676,6 @@
           document.querySelector('.battery-indicator').style.display = 'none';
         }
       }
-
       // Update battery status display
       function updateBatteryStatus(battery) {
         const level = Math.floor(battery.level * 100);
@@ -688,7 +690,6 @@
         batteryLevel.style.setProperty('--color', color);
         batteryText.textContent = `Battery: ${level}%${battery.charging ? ' (Charging)' : ''}`;
       }
-
       // Show toast feedback
       function showToast(message) {
         feedbackToast.textContent = message;
@@ -697,7 +698,6 @@
           feedbackToast.classList.remove("visible");
         }, 2000);
       }
-
       // Create ripple effect
       function createRipple(button, rippleElement) {
         rippleElement.style.transform = 'scale(0)';
@@ -707,41 +707,48 @@
         rippleElement.style.transform = 'scale(4)';
         rippleElement.style.opacity = '0';
       }
-
       // Vibrate device if supported and enabled
       function vibrateDevice(pattern = 50) {
         if (vibrationToggle.checked && 'vibrate' in navigator) {
           navigator.vibrate(pattern);
         }
       }
-
       // Send command function with feedback
-      function sendCommand(endpoint) {
+      function sendCommand(cmd) {
         if (!isConnected) {
           showToast("Not connected");
           return;
         }
         // Log the command
-        console.log("Sending command:", endpoint);
+        console.log("Sending command:", cmd);
         // Show success message without waiting for fetch result
         showToast(
-          endpoint === "/next" ? "Next slide" : 
-          endpoint === "/prev" ? "Previous slide" :
-          endpoint === "/start" ? "Starting presentation" :
-          endpoint === "/exit" ? "Toggling exit" :
-          endpoint === "/current" ? "Toggling current screen" :
+          cmd === "next" ? "Next slide" : 
+          cmd === "prev" ? "Previous slide" :
+          cmd === "start" ? "Starting presentation" :
+          cmd === "exit" ? "Toggling exit" :
+          cmd === "current" ? "Toggling current screen" :
           "Command sent"
         );
         // Vibrate feedback
-        if (endpoint === "/next" || endpoint === "/prev") {
+        if (cmd === "next" || cmd === "prev") {
           vibrateDevice([50, 30, 50]); // Double vibration pattern
         } else {
           vibrateDevice(100);
         }
         // Try to fetch but ignore errors - slide functionality will work regardless
-        fetch(endpoint)
-          .then((res) => {
-            console.log("Command sent successfully:", endpoint);
+        fetch(`/api/command/${cmd}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Command response:", data);
+            if (!data.success) {
+              showToast(data.message);
+            }
           })
           .catch((err) => {
             // Don't show error to the user since the presentation control may be working anyway
@@ -750,22 +757,21 @@
             );
           });
       }
-
       // Initialize event listeners
       function initEvents() {
         // Button clicks with ripple effect
         prevButton.addEventListener("click", () => {
           createRipple(prevButton, prevRipple);
-          sendCommand("/prev");
+          sendCommand("prev");
         });
         nextButton.addEventListener("click", () => {
           createRipple(nextButton, nextRipple);
-          sendCommand("/next");
+          sendCommand("next");
         });
         // Additional controls
-        startButton.addEventListener("click", () => sendCommand("/start"));
-        exitButton.addEventListener("click", () => sendCommand("/exit"));
-        currentButton.addEventListener("click", () => sendCommand("/current"));
+        startButton.addEventListener("click", () => sendCommand("start"));
+        exitButton.addEventListener("click", () => sendCommand("exit"));
+        currentButton.addEventListener("click", () => sendCommand("current"));
         // Toggle shake feature
         shakeToggle.addEventListener("change", function () {
           sensitivityControl.classList.toggle("visible", this.checked);
@@ -807,20 +813,19 @@
         document.addEventListener("keydown", function(e) {
           if (e.key === "ArrowRight" || e.key === "PageDown") {
             createRipple(nextButton, nextRipple);
-            sendCommand("/next");
+            sendCommand("next");
           } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
             createRipple(prevButton, prevRipple);
-            sendCommand("/prev");
+            sendCommand("prev");
           } else if (e.key === "b" || e.key === "B") {
-            sendCommand("/current");
+            sendCommand("current");
           } else if (e.key === "f" || e.key === "F") {
-            sendCommand("/exit");
+            sendCommand("exit");
           } else if (e.key === "s" || e.key === "S") {
-            sendCommand("/start");
+            sendCommand("start");
           }
         });
       }
-
       // Request permission for DeviceMotion on iOS 13+
       function requestDeviceMotionPermission() {
         if (
@@ -845,7 +850,6 @@
           window.addEventListener("devicemotion", handleMotion);
         }
       }
-
       // Setup device motion detection
       function setupDeviceMotion() {
         // For iOS 13+ we need to wait for user interaction
@@ -860,7 +864,6 @@
           isGyroscopePermissionGranted = true;
         }
       }
-
       // Handle motion events
       function handleMotion(event) {
         if (!shakeToggle.checked) return;
@@ -897,7 +900,7 @@
               lastShakeTime = now;
               moveCounter = 0;
               console.log("Shake detected, sending 'next'");
-              sendCommand("/next");
+              sendCommand("next");
               // Visual feedback on shake detection
               document.body.style.backgroundColor = "#f0f5ff";
               setTimeout(() => {
@@ -912,41 +915,36 @@
           moveCounter = 0;
         }
       }
-
       // Initialize the app
       function initApp() {
         checkDeviceMotion();
         initEvents();
       }
-
       // Start the app
       window.addEventListener("DOMContentLoaded", initApp);
     </script>
-   <script>
-    let wakeLock = null;
-
-    async function requestWakeLock() {
-      try {
-        if ('wakeLock' in navigator) {
-          wakeLock = await navigator.wakeLock.request('screen');
-          console.log("Wake Lock is active");
-
-          // Re-acquire the lock when visibility changes (e.g., switching tabs)
-          document.addEventListener('visibilitychange', async () => {
-            if (wakeLock !== null && document.visibilityState === 'visible') {
-              wakeLock = await navigator.wakeLock.request('screen');
-            }
-          });
-        } else {
-          console.log("Wake Lock API not supported.");
+    <script>
+      let wakeLock = null;
+      async function requestWakeLock() {
+        try {
+          if ('wakeLock' in navigator) {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log("Wake Lock is active");
+            // Re-acquire the lock when visibility changes (e.g., switching tabs)
+            document.addEventListener('visibilitychange', async () => {
+              if (wakeLock !== null && document.visibilityState === 'visible') {
+                wakeLock = await navigator.wakeLock.request('screen');
+              }
+            });
+          } else {
+            console.log("Wake Lock API not supported.");
+          }
+        } catch (err) {
+          console.error(`${err.name}, ${err.message}`);
         }
-      } catch (err) {
-        console.error(`${err.name}, ${err.message}`);
       }
-    }
-
-    // Request wake lock when the page loads
-    requestWakeLock();
-  </script>
+      // Request wake lock when the page loads
+      requestWakeLock();
+    </script>
 </body>
 </html>
