@@ -302,12 +302,19 @@ Do whatever you want, but don't blame us if you break your projector 😉.
 [Remix on Glitch – Remote Controller](https://glitch.com/~remotecontroller)  
 > 🔧 **Instructions**:  
 - Click **Remix** to create your own copy.  
-- Update the [HiveMQ](https://www.hivemq.com/) credentials in `.env` file with your own.
+- Update the credentials in `.env` file with your own.
 
-![image](https://github.com/user-attachments/assets/b9e00f71-50fb-425a-bc43-ad09a9ed3908)
+![image](https://github.com/user-attachments/assets/9b57da93-3d24-447d-8179-6b2dd2f40c8a)
+
 
   
 - The app will be live at `https://your-project-name.glitch.me`.
+- 
+
+Register with your HiveMQ Credentials on this web application: Create Cluster on [HiveMQ](https://www.hivemq.com/)
+
+![image](https://github.com/user-attachments/assets/84547538-007c-40cd-8081-e1f1fece3040)
+
 
 📥 **Windows Executable (Host Machine)**:  
 [Download subscriber2.0.exe](https://www.mediafire.com/file/m5qn77efi33ekcq/subscriber2.0.exe/file)  
