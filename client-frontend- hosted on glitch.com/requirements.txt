@@ -1,0 +1,7 @@
+Flask
+paho-mqtt==1.6.1
+python-dotenv
+Flask-Login
+Flask-SQLAlchemy
+Flask-WTF
+email_validator
