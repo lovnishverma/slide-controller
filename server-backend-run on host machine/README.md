@@ -199,12 +199,3 @@ Double-click the `.exe` file to run it. The GUI should launch without needing Py
 * For debugging PyInstaller builds, omit `--windowed` to see error messages in console.
 
 ---
-
-# Summary
-
-* You now have a fully documented Python MQTT slide controller GUI app.
-* Configuration, logging, and user authentication are built in.
-* You can package it into a Windows `.exe` with PyInstaller using simple commands.
-* The executable is portable and does not require Python on the target machine.
-
----
