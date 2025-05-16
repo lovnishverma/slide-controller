@@ -1,0 +1,7 @@
+{
+    "BROKER": "9xxxxxxxxxxxxxxxxxxxxe4303.s1.eu.hivemq.cloud",
+    "PORT": 8883,
+    "USERNAME": "lovnish",
+    "PASSWORD": "Niexxxxxxxx",
+    "TOPIC": "presentation/control"
+}
