@@ -201,7 +201,7 @@ The new version introduces a **graphical user interface (GUI)** built with **Tki
 
 ---
 
-## 🚀 Deployment Guide – Slide Controller Web App on Glitch.com
+## 🚀 Deployment Guide – Slide Controller Web App on Glitch.com (this project is deployed in render.com coz glitch.com is discontinued)
 
 ### Step-by-Step Instructions
 
